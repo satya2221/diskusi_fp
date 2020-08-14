@@ -22,6 +22,7 @@
 
 <body id="page-top">
 
+
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -41,9 +42,8 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
+                @yield('content')
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
 
             </div>
             <!-- /.container-fluid -->

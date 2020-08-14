@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('templatenya.master');
+    return view('welcome');
 });
 Route::resource('pertanyaan','PertanyaanController');
 Route::resource('jawaban','JawabanController');
@@ -23,3 +23,7 @@ Route::resource('vote_tanya','VoteTanyaController');
 Route::resource('vote_jawab','VoteJawabController');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

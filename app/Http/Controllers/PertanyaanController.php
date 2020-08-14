@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\ModelPertanyaan;
 
 class PertanyaanController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,10 @@ class PertanyaanController extends Controller
      */
     public function index()
     {
-        //
+        $pertanyaan = ModelPertanyaan::all();
+        //dd($pertanyaan);
+        
+        return view ('templatenya.tampildata', compact('pertanyaan'));
     }
 
     /**
@@ -23,7 +33,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        //
+        return view ('templatenya.inputdata');
     }
 
     /**
@@ -34,7 +44,18 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul' => 'required',
+            'isi' => 'required',
+        ]);
+
+        $pertanyaan = new ModelPertanyaan;
+        $pertanyaan->isi = $request->isi;
+        $pertanyaan->judul = $request->judul;
+        $pertanyaan->user_id = $request->user_id;
+        $pertanyaan->save();
+
+        return redirect ('/pertanyaan');
     }
 
     /**
@@ -45,7 +66,9 @@ class PertanyaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $pertanyaan = ModelPertanyaan::find($id);
+        //dd($pertanyaan->author);
+        return view ('templatenya.tampil', compact('pertanyaan'));
     }
 
     /**
@@ -56,7 +79,8 @@ class PertanyaanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pertanyaan = ModelPertanyaan::find($id);
+        return view ('templatenya.edit', compact('pertanyaan'));
     }
 
     /**
@@ -68,7 +92,17 @@ class PertanyaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'judul' => 'required|max:255',
+            'isi' => 'required',
+        ]);
+
+        $pertanyaan = ModelPertanyaan::find($id);
+        $pertanyaan->judul = $request->judul;
+        $pertanyaan->isi = $request->isi;
+        $pertanyaan->save();
+
+        return redirect ('/pertanyaan');
     }
 
     /**
@@ -79,6 +113,9 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pertanyaan = ModelPertanyaan::find($id);
+        $pertanyaan->delete();
+
+        return redirect ('/pertanyaan');
     }
 }
