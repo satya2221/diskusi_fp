@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('templatenya.master');
 });
+Route::resource('pertanyaan','PertanyaanController');
+Route::resource('jawaban','JawabanController');
+Route::resource('komen_tanya','KomenTanyaController');
+Route::resource('komen_jawab','KomenJawabController');
+Route::resource('tag','TagController');
+Route::resource('vote_tanya','VoteTanyaController');
+Route::resource('vote_jawab','VoteJawabController');
+
+
