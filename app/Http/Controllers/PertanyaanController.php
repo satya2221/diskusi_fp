@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\ModelPertanyaan;
 
 class PertanyaanController extends Controller
 {
@@ -13,7 +14,8 @@ class PertanyaanController extends Controller
      */
     public function index()
     {
-        //
+        $pertanyaan = ModelPertanyaan::all();
+        return view ('templatenya.master', compact('pertanyaan'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        //
+        return view ('templatenya.master');
     }
 
     /**
@@ -34,7 +36,16 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul' => 'required',
+            'isi' => 'required',
+        ]);
+
+        $pertanyaan = new ModelPertanyaan;
+        $pertanyaan->isi = $request->isi;
+        $pertanyaan->judul = $request->judul;
+        $pertanyaan->user_id = $request->user_id;
+        $pertanyaan->save();
     }
 
     /**
