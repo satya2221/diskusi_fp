@@ -23,7 +23,7 @@ class PertanyaanController extends Controller
         $pertanyaan = ModelPertanyaan::all();
         //dd($pertanyaan);
         
-        return view ('templatenya.tampildata', compact('pertanyaan'));
+        return view ('pertanyaan.tampildata', compact('pertanyaan'));
     }
 
     /**
@@ -33,7 +33,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        return view ('templatenya.inputdata');
+        return view ('pertanyaan.inputdata');
     }
 
     /**
@@ -68,7 +68,7 @@ class PertanyaanController extends Controller
     {
         $pertanyaan = ModelPertanyaan::find($id);
         //dd($pertanyaan->author);
-        return view ('templatenya.tampil', compact('pertanyaan'));
+        return view ('pertanyaan.tampil', compact('pertanyaan'));
     }
 
     /**
@@ -80,7 +80,7 @@ class PertanyaanController extends Controller
     public function edit($id)
     {
         $pertanyaan = ModelPertanyaan::find($id);
-        return view ('templatenya.edit', compact('pertanyaan'));
+        return view ('pertanyaan.edit', compact('pertanyaan'));
     }
 
     /**

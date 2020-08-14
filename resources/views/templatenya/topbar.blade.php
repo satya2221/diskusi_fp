@@ -63,7 +63,7 @@
                         <span class="font-weight-bold">A new monthly report is ready to download!</span>
                     </div>
                 </a>
-{{--                <a class="dropdown-item d-flex align-items-center" href="#">--}}
+<!-- {{--                <a class="dropdown-item d-flex align-items-center" href="#">--}}
 {{--                    <div class="mr-3">--}}
 {{--                        <div class="icon-circle bg-warning">--}}
 {{--                            <i class="fas fa-exclamation-triangle text-white"></i>--}}
@@ -73,7 +73,7 @@
 {{--                        <div class="small text-gray-500">December 2, 2019</div>--}}
 {{--                        Spending Alert: We've noticed unusually high spending for your account.--}}
 {{--                    </div>--}}
-{{--                </a>--}}
+{{--                </a>--}} -->
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
             </div>
         </li>
@@ -85,9 +85,9 @@
         <!-- Nav Item - User Information -->
         @guest
             <li class="nav-item">
-                <a href="" class="btn btn-sm btn-outline-danger my-3">Login</a>
+                <a class="btn btn-sm btn-outline-danger my-2" href="{{ route('login') }}">{{ __('Login') }}</a>
             @if(Route::has('register'))
-                <a class="btn btn-sm btn-info" href="{{ route('register') }}">{{ __('Register') }}</a>
+                <a class="btn btn-sm btn-outline-info my-2" href="{{ route('register') }}">{{ __('Register') }}</a>
             @endif
             </li>
         @else
