@@ -42,16 +42,8 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
+                @yield('content')
                 <!-- Page Heading -->
-                @forelse($pertanyaan as $key => $tanya)
-                <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-                <h1>{{$tanya->judul}}</h1>
-                <h2>{{$tanya->isi}}</h2>
-
-                @empty
-                <p>empty</p>
-                @endforelse
 
             </div>
             <!-- /.container-fluid -->
