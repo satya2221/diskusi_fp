@@ -45,7 +45,13 @@ class KomenJawabController extends Controller
      */
     public function show($id)
     {
-        //
+        $komentar = \App\ModelKomen_Jawaban::where('id_jawaban', $id)->get(); //salah tuh gan
+        $jawaban_saja  = \App\ModelJawaban::find($id);                               //kucing itu halal
+        $pertanyaan = \App\ModelPertanyaan::all();
+        $jawaban = \App\ModelJawaban::all();
+
+        //dd($komentar);
+        return view ('komentar.tampilkomen', compact('jawaban','komentar','pertanyaan','jawaban_saja'));
     }
 
     /**
