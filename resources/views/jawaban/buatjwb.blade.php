@@ -1,5 +1,5 @@
 @extends ('templatenya.master')
-@section ('content')               
+@section ('content')              
     <form role="form" action="/jawaban" method="POST">
     @csrf
     <div class="form-group">
@@ -11,7 +11,6 @@
     <a href="/pertanyaan/{{$pertanyaan->id}}" class="btn btn-primary">Kembali</a>
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    
 
 
 @endsection

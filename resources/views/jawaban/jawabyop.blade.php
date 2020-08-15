@@ -1,10 +1,10 @@
 @extends ('pertanyaan.tampil')
 
 @section ('jawaban')
-                
+                @if($jawaban)
                 <h1 class="h3 mb-4 text-gray-800"></h1>
                 
-
+                
                 
 
                 
@@ -17,8 +17,10 @@
                     </div>
                 
                 </div>
+                @else
+                <?php redirect('/');?>
                 
-
+                @endif
                 @yield('komentar');
 
 
