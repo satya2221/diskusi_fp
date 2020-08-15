@@ -36,7 +36,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Semua Pertanyaan:</h6>
                 <a class="collapse-item" href="buttons.html">Terjawab</a>
-                <a class="collapse-item" href="cards.html">Belum terjawab</a>
+                <a class="collapse-item" href="/pertanyaan">Belum terjawab</a>
 
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Pertanyaan anda:</h6>
@@ -80,7 +80,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
+            <i class="fas fa-chart-line"></i>
             <span>Statistik</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
