@@ -13,7 +13,7 @@ class KomenJawabController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

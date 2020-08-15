@@ -80,6 +80,7 @@ class PertanyaanController extends Controller
     public function edit($id)
     {
         $pertanyaan = ModelPertanyaan::find($id);
+        //dd($pertanyaan);
         return view ('pertanyaan.edit', compact('pertanyaan'));
     }
 
