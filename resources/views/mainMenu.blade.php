@@ -40,6 +40,7 @@
                                         <?php echo strip_tags($value->isi,'<p>');?>
                                     </div>
                                     <div class="col-1">
+                                        @auth
                                         <a href="poin/{{$value->id}}/{{Auth::user()->id}}/add"><i class="fas fa-sort-up fa-5x"></i></a>
                                         <?php $poin = ModelPoin::where('id_jawaban', $value->id )
                                                                     -> sum('poin');
@@ -48,6 +49,7 @@
                                             <h3 align="center"><strong>{{$poin}}</strong></h3>
                                         @endisset
                                         <a href="poin/{{$value->id}}/{{Auth::user()->id}}/subtract"><i class="fas fa-sort-up fa-5x fa-rotate-180"></i></a>
+                                        @endauth
                                     </div>
                                 </div>
                         </div>
