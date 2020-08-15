@@ -30,6 +30,14 @@ class JawabanController extends Controller
         return view ('jawaban.buatjwb', compact('pertanyaan'));
     }
 
+    public function jawabtop($id)
+    {
+        $jawaban = \App\ModelJawaban::where('id', $id)->first();
+        $pertanyaan = \App\ModelPertanyaan::find($id);
+        //dd($jawaban);
+        return view ('jawaban.jawabyop', compact('jawaban','pertanyaan'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -100,6 +108,7 @@ class JawabanController extends Controller
 
         return redirect ('/pertanyaan');
     }
+
 
     /**
      * Remove the specified resource from storage.

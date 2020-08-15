@@ -22,6 +22,8 @@ Route::resource('tag','TagController');
 Route::resource('vote_tanya','VoteTanyaController');
 Route::resource('vote_jawab','VoteJawabController');
 Route::get('jawaban/{jawaban}/jawab','JawabanController@jawab');
+Route::put('/pertanyaan/{pertanyaan}/best','PertanyaanController@updatebest');
+Route::get('jawaban/{jawaban}/jawabtop','JawabanController@jawabtop');
 
 
 

@@ -106,6 +106,16 @@ class PertanyaanController extends Controller
         return redirect ('/pertanyaan');
     }
 
+    public function updatebest(Request $request, $id)
+    {
+        $pertanyaan = \App\ModelPertanyaan::find($id);
+        $pertanyaan->best_answer = $request->best_answer;
+        $pertanyaan->save();
+
+        return redirect ('/pertanyaan');
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
