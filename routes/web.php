@@ -25,6 +25,8 @@ Route::get('jawaban/{jawaban}/jawab','JawabanController@jawab');
 Route::put('/pertanyaan/{pertanyaan}/best','PertanyaanController@updatebest');
 Route::get('jawaban/{jawaban}/jawabtop','JawabanController@jawabtop');
 
+Route::get('poin/{pertanyaan}/{user_id}/add','PoinController@add');
+Route::get('poin/{pertanyaan}/{user_id}/subtract','PoinController@subtract');
 
 
 Auth::routes();

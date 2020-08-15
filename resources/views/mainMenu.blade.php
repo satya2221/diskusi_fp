@@ -1,7 +1,9 @@
 @extends('templatenya.master')
 @push('css')
     <link href="{{asset('css/mainMenu.css')}}" rel="stylesheet">
-    <?php use \App\ModelPertanyaan;?>
+    <?php use \App\ModelPertanyaan;
+          use  \App\ModelPoin;
+    ?>
 @endpush
 @section('content')
     <div class="container-bg" >
@@ -38,9 +40,14 @@
                                         <?php echo strip_tags($value->isi,'<p>');?>
                                     </div>
                                     <div class="col-1">
-                                        <i class="fas fa-sort-up fa-5x"></i>
-                                        Angka
-                                        <i class="fas fa-sort-up fa-5x fa-rotate-180"></i>
+                                        <a href="poin/{{$value->id}}/{{Auth::user()->id}}/add"><i class="fas fa-sort-up fa-5x"></i></a>
+                                        <?php $poin = ModelPoin::where('id_jawaban', $value->id )
+                                                                    -> sum('poin');
+                                        ?>
+                                        @isset($poin)
+                                            <h3 align="center"><strong>{{$poin}}</strong></h3>
+                                        @endisset
+                                        <a href="poin/{{$value->id}}/{{Auth::user()->id}}/subtract"><i class="fas fa-sort-up fa-5x fa-rotate-180"></i></a>
                                     </div>
                                 </div>
                         </div>
