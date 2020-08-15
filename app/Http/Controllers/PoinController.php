@@ -29,13 +29,20 @@ class PoinController extends Controller
     }
     public function subtract($id_tanya, $id_user)
     {
-        $tambah = new ModelPoin;
-        $tambah->user_id = $id_user;
-        $tambah->id_jawaban = $id_tanya;
-        $tambah->poin = -1;
-        $tambah->save();
+        $cek = ModelPoin::where('user_id', $id_user )->first();
+        if ($cek) {
+            return redirect('/');
+        }
+        else{
+            $tambah = new ModelPoin;
+            $tambah->user_id = $id_user;
+            $tambah->id_jawaban = $id_tanya;
+            $tambah->poin = -1;
+            $tambah->save();
         //dd($pertanyaan);
         
-        return redirect('/');
+            return redirect('/');
+        }
+        
     }
 }
