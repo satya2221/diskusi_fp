@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class JawabanController extends Controller
 {
     /**
@@ -13,7 +14,7 @@ class JawabanController extends Controller
      */
     public function index()
     {
-        //
+        $jawaban = \App\ModelJawaban::all();
     }
 
     /**
@@ -21,9 +22,12 @@ class JawabanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function jawab($id)
     {
-        //
+        $jawaban = \App\ModelJawaban::all();
+        $pertanyaan = \App\ModelPertanyaan::find($id);
+        //dd($pertanyaan);
+        return view ('jawaban.buatjwb', compact('pertanyaan'));
     }
 
     /**
@@ -34,7 +38,17 @@ class JawabanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'isi' => 'required',
+        ]);
+
+        $jawaban = new \App\ModelJawaban;
+        $jawaban->isi = $request->isi;
+        $jawaban->id_pertanyaan = $request->id_pertanyaan;
+        $jawaban->user_id = $request->user_id;
+        $jawaban->save();
+
+        return redirect ('/pertanyaan');
     }
 
     /**
@@ -45,7 +59,10 @@ class JawabanController extends Controller
      */
     public function show($id)
     {
-        //
+        $jawaban = \App\ModelJawaban::where('id_pertanyaan', $id)->get();
+        $pertanyaan = \App\ModelPertanyaan::find($id);
+        //dd($jawaban);
+        return view ('jawaban.tampildatajwb', compact('jawaban','pertanyaan'));
     }
 
     /**
@@ -56,7 +73,10 @@ class JawabanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jawaban = \App\ModelJawaban::find($id);
+        $pertanyaan = \App\ModelPertanyaan::find($id);
+        //dd($pertanyaan);
+        return view ('jawaban.editjwb', compact('jawaban','pertanyaan'));
     }
 
     /**
@@ -68,7 +88,17 @@ class JawabanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'isi' => 'required',
+        ]);
+
+        $jawaban = \App\ModelJawaban::find($id);
+        $jawaban->isi = $request->isi;
+        $jawaban->id_pertanyaan = $request->id_pertanyaan;
+        $jawaban->user_id = $request->user_id;
+        $jawaban->save();
+
+        return redirect ('/pertanyaan');
     }
 
     /**
@@ -79,6 +109,9 @@ class JawabanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jawaban = \App\ModelJawaban::find($id);
+        $jawaban->delete();
+
+        return redirect ('/pertanyaan');
     }
 }
