@@ -34,12 +34,18 @@ class JawabanController extends Controller
         return view ('jawaban.buatjwb', compact('pertanyaan'));
     }
 
-    public function jawabtop($id)
+    public function jawabtop($id,$idp)
     {
         $jawaban = \App\ModelJawaban::where('id', $id)->first();
-        $pertanyaan = \App\ModelPertanyaan::find($id);
+        $pertanyaan = \App\ModelPertanyaan::find($idp);
+        if(empty($jawaban)){
+            return redirect ('/pertanyaan');
+        }
+        else{
+            return view ('jawaban.jawabyop', compact('jawaban','pertanyaan'));
+        }
         //dd($jawaban);
-        return view ('jawaban.jawabyop', compact('jawaban','pertanyaan'));
+        
     }
 
     /**
